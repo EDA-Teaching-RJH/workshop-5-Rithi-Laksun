@@ -146,9 +146,14 @@ def handle_random_event():
 
 def use_resource(resource, amount): 
 # TODO: Implement resource usage logic 
+	ship["systems"]["sensors"] -= 25
+	ship["resources"]["energy"] -= 200
+	print("You used some sensors and it stopped working. Also energy was lost.")
 
 def replenish_resources(): 
 # TODO: Implement resource replenishment logic 
-
+	ship["systems"]["sensors"] = 20
+	ship["systems"]["shields"] = 30
+	print("You only have 20 sensors left and 30 shields")
 
 main()
