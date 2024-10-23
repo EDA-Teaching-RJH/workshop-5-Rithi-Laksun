@@ -40,7 +40,8 @@ def main():
 	elif action == "3": 
 		add_crew_member() 
 	elif action == "4": 
-		print(f"Simulation ended. Final score: {score}") break 
+		print(f"Simulation ended. Final score: {score}") 
+		exit() 
 	else: 
 		print("Invalid action. Please try again.") 
 		
@@ -52,15 +53,63 @@ def main():
 
 def display_status(): 
 # TODO: Implement function to display ship status, resources, and crew 
-
+	while ship != 0:
+		print("Current status:", ship["systems"]["resources"]["crew"])
 def get_user_action(): 
 # TODO: Implement function to get and return user's chosen action 
-
+	global action
+	action = int(input("Choose a number from 1-4 to do an action: "))
 def run_mission(): 
 	mission_type = random.choice(MISSION_TYPES) 
 	print(f"\nNew mission: {mission_type}") 
 	# TODO: Implement mission logic for different mission types 
 	# Return the score earned from the mission 
+	def missions(mission_type): 
+		match mission_type:
+			case "Exploration":
+				crew_member = "Troi"
+				ship["systems"]["engines"] = 85
+				ship["resources"]["energy"] = 855
+				score += 2
+				print("score:", score)
+				print(crew_member,"is on this mission",(ship["crew"]["Troi"]))
+				return "A lot of engines and power was used",(ship["systems"]["engines"]), (ship["resources"]["energy"])
+			case "Diplomacy":
+				crew_member = "Worf"
+				ship["systems"]["engines"] = 80
+				ship["systems"]["sensors"] -= 20
+				ship["resources"]["energy"] = 900
+				score += 3
+				print("score:", score)
+				print(crew_member,"are on this mission",(ship["crew"]["Worf"]))
+				return "A lot of engines,sensors and power was used",(ship["systems"]["engines"]["sensors"]), (ship["resources"]["energy"])
+			case "Combat":
+				crew_member = "Picard","Data"
+				ship["systems"]["engines"] = 65
+				ship["systems"]["weapons"]["shields"] -= 30
+				ship["resources"]["energy"]= 665
+				ship["resources"]["torpedoes"] = 4
+				score += 3
+				print("score:", score)
+				print(crew_member,"are on this mission",(ship["crew"]["Picard"]["Data"]))
+				return "A lot of engines,weapons,shields and power was used",(ship["systems"]["engines"]["weapons"]["shields"]), (ship["resources"]["energy"]),(ship["resources"]["torpedoes"])
+			case "Rescue":
+				crew_member = "La Forge","Riker"
+				ship["systems"]["engines"] = 75
+				ship["systems"]["shields"]["sensors"] -= 30
+				ship["resources"]["energy"] = 700
+				score += 2
+				print("score:", score)
+				print(crew_member,"are on this mission",(ship["crew"]["La Forge"]["Riker"]))
+				return "A lot of engines, shields, sensors and power was used",(ship["systems"]["shields"]["sensors"]), (ship["resources"]["energy"])
+			case "Scientific Research":
+				crew_member = "Crusher"
+				ship["systems"]["engines"]["sensors"] = 85
+				ship["resources"]["energy"] = 855
+				score += 2
+				print("score:", score)
+				print(crew_member,"is on this mission"),(ship["crew"]["Crusher"])
+				return "A lot of engines and power was used",(ship["systems"]["engines"]["sensors"]), (ship["resources"]["energy"])
 
 def repair_system(): 
 
@@ -77,5 +126,6 @@ def use_resource(resource, amount):
 
 def replenish_resources(): 
 # TODO: Implement resource replenishment logic 
+
 
 main()
