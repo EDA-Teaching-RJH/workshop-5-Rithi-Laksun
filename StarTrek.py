@@ -64,6 +64,7 @@ def run_mission():
 	print(f"\nNew mission: {mission_type}") 
 	# TODO: Implement mission logic for different mission types 
 	# Return the score earned from the mission 
+	turn += 1
 	def missions(mission_type): 
 		match mission_type:
 			case "Exploration":
@@ -110,10 +111,19 @@ def run_mission():
 				print("score:", score)
 				print(crew_member,"is on this mission"),(ship["crew"]["Crusher"])
 				return "A lot of engines and power was used",(ship["systems"]["engines"]["sensors"]), (ship["resources"]["energy"])
+		missions()
 
 def repair_system(): 
-
 # TODO: Implement system repair functionality
+	print("WARNING: there are damages to your ship!")
+	ship["systems"]["engines"] -= 20
+	ship["systems"]["shields"] -= 25
+	ship["systems"]["sensors"] +=25
+	ship["resources"]["energy"] -=150
+	print("You have less engines and shield due to damage. However now you added more sensors for safety.")
+	print("Engines left: ",(ship["systems"]["engines"]))
+	print("Shields left: ",(ship["systems"]["shields"]))
+	print("Sensors on ship: ", (ship["systems"]["sensors"]))
  
 def add_crew_member(): 
 # TODO: Implement functionality to add a new crew member 
