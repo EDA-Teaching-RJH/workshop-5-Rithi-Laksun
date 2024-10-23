@@ -127,7 +127,8 @@ def repair_system():
  
 def add_crew_member(): 
 # TODO: Implement functionality to add a new crew member 
-
+	ship["crew"]["Wesley"] = "Acting Ensign"
+	print("Wesley has been added to the crew!")
 def handle_random_event():
 # TODO: Implement random events that can occur during the simulation 
 
