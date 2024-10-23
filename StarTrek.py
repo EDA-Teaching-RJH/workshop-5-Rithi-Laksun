@@ -131,6 +131,18 @@ def add_crew_member():
 	print("Wesley has been added to the crew!")
 def handle_random_event():
 # TODO: Implement random events that can occur during the simulation 
+	print("You're ship is getting attacked!")
+	choose = input("Do you want to leave or fight: ").casefold()
+	if choose == "leave":
+		print("You escaped but there are slight damages.")
+		score -= 1
+	elif choose == "fight":
+		print("You won! But there are damages.")
+		score += 1
+		ship["systems"]["weapons"] -=12
+	else:
+		print("Invalid response.")
+		pass
 
 def use_resource(resource, amount): 
 # TODO: Implement resource usage logic 
